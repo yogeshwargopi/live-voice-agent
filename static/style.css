@@ -1,0 +1,225 @@
+:root {
+  --ink: #2a2118;
+  --muted: #6f6256;
+  --clay: #c4513a;
+  --paper: #fffaf3;
+  --line: #e4d5c4;
+  --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  --sans: "Avenir Next", "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: radial-gradient(ellipse at top, #f8f2e8 0%, #efe4d4 58%, #e7d8c4 100%);
+  font-family: var(--serif);
+}
+
+main {
+  width: min(40rem, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2.75rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  margin: 0;
+  font: 600 0.75rem/1 var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+h1 {
+  margin: 0.45rem 0 0;
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.sub {
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+
+.pill {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.42rem 0.9rem;
+  font: 600 0.92rem/1 var(--sans);
+  cursor: pointer;
+}
+
+.pill.is-on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #f6f0e6;
+}
+
+.pill:focus-visible,
+.mic:focus-visible,
+.clear:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+}
+
+.log {
+  flex: 1;
+  overflow: auto;
+  margin: 0.5rem 0 1rem;
+  min-height: 12rem;
+}
+
+.empty {
+  max-width: 22rem;
+  margin: 2.5rem 0 0;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+
+.bubble { max-width: 86%; margin: 0.9rem 0; }
+.bubble.user { margin-left: auto; }
+
+.who {
+  margin: 0 0 0.35rem;
+  font: 600 0.72rem/1 var(--sans);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.bubble.user .who { text-align: right; }
+
+.said {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  background: var(--paper);
+  border-radius: 1.15rem 1.15rem 1.15rem 0.35rem;
+  line-height: 1.45;
+  font-size: 1.12rem;
+  box-shadow: 0 8px 24px rgba(42, 33, 24, 0.05);
+}
+
+.bubble.user .said {
+  background: #f6d7c9;
+  border-radius: 1.15rem 1.15rem 0.35rem 1.15rem;
+}
+
+.dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding-bottom: 0.4rem;
+}
+
+.status {
+  min-height: 1.2rem;
+  margin: 0;
+  font: 600 0.85rem/1 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.error {
+  width: min(100%, 24rem);
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.8rem;
+  background: #f8e6df;
+  color: #7a2e24;
+  font: 0.95rem/1.4 var(--sans);
+  text-align: center;
+}
+
+.mic {
+  width: 7.6rem;
+  height: 7.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--clay);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font: 600 1.05rem/1 var(--sans);
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(196, 81, 58, 0.28);
+}
+
+.mic:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.mic.is-listening {
+  background: var(--ink);
+  animation: pulse 1.4s ease-out infinite;
+}
+
+.bars {
+  display: none;
+  align-items: flex-end;
+  gap: 4px;
+  height: 14px;
+}
+
+.mic.is-listening .bars { display: flex; }
+
+.bars i {
+  display: block;
+  width: 3px;
+  height: 8px;
+  border-radius: 999px;
+  background: white;
+  animation: bounce 0.9s ease-in-out infinite;
+}
+
+.bars i:nth-child(2) { animation-delay: 0.15s; height: 14px; }
+.bars i:nth-child(3) { animation-delay: 0.3s; }
+
+.clear {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: 600 0.92rem/1 var(--sans);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(42, 33, 24, 0.28); }
+  100% { box-shadow: 0 0 0 18px rgba(42, 33, 24, 0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mic.is-listening,
+  .bars i { animation: none; }
+}

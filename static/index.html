@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Friend</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Voice companion</p>
+      <h1>Talk with me</h1>
+      <p class="sub">English, Hindi, Tamil, and Telugu.</p>
+    </header>
+
+    <div class="pills" role="radiogroup" aria-label="Language">
+      <button type="button" class="pill is-on" data-lang="auto" role="radio" aria-checked="true">Auto</button>
+      <button type="button" class="pill" data-lang="en" role="radio" aria-checked="false">English</button>
+      <button type="button" class="pill" data-lang="hi" role="radio" aria-checked="false">Hindi</button>
+      <button type="button" class="pill" data-lang="ta" role="radio" aria-checked="false">Tamil</button>
+      <button type="button" class="pill" data-lang="te" role="radio" aria-checked="false">Telugu</button>
+    </div>
+
+    <section class="log" id="log" aria-live="polite">
+      <p class="empty" id="empty">Press Talk, speak, then press Stop. I'll answer in your language.</p>
+      <div id="transcript"></div>
+    </section>
+
+    <div class="dock">
+      <p class="status" id="status" role="status"></p>
+      <p class="error" id="error" role="alert" hidden></p>
+      <button type="button" class="mic" id="mic" aria-pressed="false" aria-label="Talk">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span id="mic-label">Talk</span>
+      </button>
+      <button type="button" class="clear" id="clear">Clear</button>
+    </div>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

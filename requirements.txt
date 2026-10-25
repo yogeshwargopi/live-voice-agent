@@ -1,0 +1,5 @@
+fastapi==0.161.1
+uvicorn==0.54.0
+openai==3.37.0
+python-dotenv==1.2.4
+python-multipart==0.0.32
